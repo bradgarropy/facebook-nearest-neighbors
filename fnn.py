@@ -103,7 +103,7 @@ def main():
     nearest_neighbors = nearest(origin, args.number, neighbors)
 
     # log summary
-    summary(nearest_neighbors)
+    summary(origin, nearest_neighbors)
 
     return
 
