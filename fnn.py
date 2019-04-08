@@ -9,25 +9,6 @@ import logger
 import cli
 
 
-def calculate_distance(p1, p2):
-    """ Calculates the distance between two Points.
-
-    Parameters:
-        p1 (Point): first point.
-        p2 (Point): second point.
-
-    Returns:
-        distance (float): distance between the two points.
-    """
-
-    x = p2.x - p1.x
-    y = p2.y - p1.y
-
-    distance = math.hypot(x, y)
-
-    return distance
-
-
 def parse_neighbors(path):
     """ Parses neighbors file.
 
@@ -65,18 +46,16 @@ def nearest(origin=Point.from_coords(0, 0), number=3, neighbors=[]):
     nearest_neighbors = []
 
     for neighbor in neighbors:
+
         if len(nearest_neighbors) < number:
             nearest_neighbors.append(neighbor)
             continue
 
-        distance = calculate_distance(origin, neighbor)
-        farthest = max(nearest_neighbors)
+        farthest = max(nearest_neighbors, key=lambda n: origin.distance(n))
 
-        if distance < farthest:
-            logging.info(
-                "distance (%s) is closer than farthest (%s)!", distance, farthest)
+        if origin.distance(neighbor) < origin.distance(farthest):
             index = nearest_neighbors.index(farthest)
-            nearest_neighbors[index] = distance
+            nearest_neighbors[index] = neighbor
 
     return nearest_neighbors
 
@@ -104,7 +83,11 @@ def main():
     neighbors = parse_neighbors(args.neighbors)
 
     # determine nearest
-    nearest(origin, args.number, neighbors)
+    nearest_neighbors = nearest(origin, args.number, neighbors)
+
+    for nearest_neighbor in nearest_neighbors:
+        logging.info("%s, %s", origin.distance(
+            nearest_neighbor), nearest_neighbor)
 
     return
 
