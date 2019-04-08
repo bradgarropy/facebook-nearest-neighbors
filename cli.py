@@ -23,6 +23,7 @@ def cli():
                         help="origin point.")
     parser.add_argument("-n", "--number",
                         action="store",
+                        type=int,
                         help="number of nearest neighbors to find.")
     parser.add_argument("neighbors",
                         action="store",
