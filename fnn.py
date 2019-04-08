@@ -1,7 +1,5 @@
 # standard imports
 import logging
-import math
-import re
 
 # custom imports
 from point import Point
