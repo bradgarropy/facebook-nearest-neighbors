@@ -60,6 +60,23 @@ def nearest(origin=Point.from_coords(0, 0), number=3, neighbors=[]):
     return nearest_neighbors
 
 
+def summary(origin, neighbors):
+    """ Logs summary of nearest neighbors.
+
+    Parameters:
+        origin (Point):   origin point from which to find nearest neighbors.
+        neighbors (list): list of nearest Points.
+
+    Returns:
+        None
+    """
+
+    for neighbor in neighbors:
+        logging.info("%s, %s", origin.distance(neighbor), neighbor)
+
+    return
+
+
 def main():
     """ Main method.
 
@@ -85,9 +102,8 @@ def main():
     # determine nearest
     nearest_neighbors = nearest(origin, args.number, neighbors)
 
-    for nearest_neighbor in nearest_neighbors:
-        logging.info("%s, %s", origin.distance(
-            nearest_neighbor), nearest_neighbor)
+    # log summary
+    summary(nearest_neighbors)
 
     return
 
