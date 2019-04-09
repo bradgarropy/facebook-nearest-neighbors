@@ -1,6 +1,9 @@
 # standard imports
 import argparse
 
+# custom imports
+from point import Point
+
 
 def cli():
     """ Defines and parses the command line arguments.
@@ -18,12 +21,14 @@ def cli():
     )
 
     # define arguments
-    parser.add_argument("origin",
+    parser.add_argument("-o", "--origin",
                         action="store",
+                        default=Point.from_coords(0, 0),
                         help="origin point.")
     parser.add_argument("-n", "--number",
                         action="store",
                         type=int,
+                        default=3,
                         help="number of nearest neighbors to find.")
     parser.add_argument("neighbors",
                         action="store",

@@ -92,7 +92,10 @@ def main():
     args = cli.cli()
 
     # parse origin
-    origin = Point.from_string(args.origin)
+    if isinstance(args.origin, Point):
+        origin = args.origin
+    else:
+        origin = Point.from_string(args.origin)
 
     # parse neighbors
     neighbors = parse_neighbors(args.neighbors)
