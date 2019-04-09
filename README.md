@@ -12,6 +12,8 @@ This question didn't contain much information at all, so I had to clarify and pu
 
 There was no indication of how the list of points would be provided, so I assumed there was a file on the system which contained the relevant data. Based on this assumption, my solution accepts a file path as input from which to read the points.
 
+I went a little above and beyond here and created [tools/neighbors.py][2], a script which generates a file with as many points as you specify.
+
 ## 💀 Execution
 
 If you want to see my solution, clone the repository and execute it locally!
@@ -23,3 +25,4 @@ python fnn.py neighbors.txt -o '(0, 0)' -n 3
 ```
 
 [1]: https://www.facebook.com/careers
+[2]: https://github.com/bradgarropy/facebook-nearest-neighbors/blob/master/tools/neighbors.py
