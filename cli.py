@@ -35,7 +35,7 @@ def cli():
                         help="path to neighbors file.")
     parser.add_argument("-v", "--version",
                         action="version",
-                        version="0.0.1",
+                        version="1.0.0",
                         help="display the version")
 
     # parse arguments
